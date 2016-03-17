@@ -1,0 +1,71 @@
+perl_set $cache_args '
+sub {
+    my $r = shift;
+    my @args = split(/&/ , $r->args);
+    my $size =@args;
+    my @args_new = ();
+    for(my $i = 0; $i < $size; $i++) {
+        my $arg = $args[$i];
+        my @k_and_v = split(/=/, $arg);
+        my $key = $k_and_v[0];
+        if (!(($key =~ /^(utm_|gg).*/) || ($key eq "la") || ($key eq "gclid") || ($key eq "size"))) {
+            @args_new = (@args_new, $arg);
+        }
+    }
+    my $cache_args = join("&", @args_new);
+    return $cache_args;
+}
+';
+
+perl_set $rewrite_url '
+sub {
+    my $r = shift;
+    my @uri_array = split(/\//, $r->uri);
+    my @new_uri_array = ();
+    @args_array = ();
+
+    for (my $i = 0; $i < @uri_array; $i++) {
+        my $s = $uri_array[$i];
+        if ($s eq "") {
+        } else {
+            my @k_and_v = split(/__/, $s);
+            my $k = $k_and_v[0];
+            my $v = $k_and_v[1];
+            if ($k eq "currency") {
+                @args_array = (@args_array, "currency=$v");
+            } elsif ($k eq "no_banner") {
+                @args_array = (@args_array, "no_banner=$v");
+            } elsif ($k eq "p") {
+                @args_array = (@args_array, "p=$v");
+            } elsif ($k eq "pid") {
+                @args_array = (@args_array, "pid=$v");
+            } elsif ($k eq "g") {
+                @args_array = (@args_array, "g=$v");
+            } elsif ($k eq "is_ajax") {
+                @args_array = (@args_array, "is_ajax=$v");
+            } elsif ($k eq "pos") {
+                @args_array = (@args_array, "pos=$v");
+            } else {
+                @new_uri_array = (@new_uri_array, $s);
+            }
+        }
+    }
+
+    my $args_array_length = scalar @args_array;
+    if ($args_array_length eq 0) {
+        return "";
+    }
+
+    my $uri_array_length = scalar @new_uri_array;
+    my $new_uri = join("/", @new_uri_array);
+    if ($uri_array_length eq 0) {
+        $new_uri = "/";
+    } else {
+        $new_uri = "/" . $new_uri . "/";
+    }
+
+    my $new_args = join("&", @args_array);
+    my $new_url = "$new_uri?$new_args";
+    return $new_url;
+}
+';
