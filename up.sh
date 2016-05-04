@@ -69,7 +69,7 @@ sudo make && make install
 sudo mkdir -p /var/lib/nginx/tmp/client_body
 sudo mkdir -p /var/nginxproxycache/client_temp
 
-sudo cp -r /var/www/nginx_config/* /etc/nginx
+sudo cp -r /var/www/nginx_config/* /etc/nginx/
 sudo cp /var/www/nginx /etc/init.d
 sudo update-rc.d nginx defaults
 
@@ -79,7 +79,7 @@ sudo useradd -r -g nginx -s /bin/false -M nginx
 sudo groupadd -r www-data
 sudo useradd -r -g www-data -s /bin/false -M www-data
 
-sudo apt-get install php5-dev php-pear
+sudo apt-get install -y php5-dev php-pear
 sudo pecl install xdebug
 sudo apt-get install -y lrzsz
 sudo apt-get install -y vim
@@ -88,7 +88,7 @@ sudo apt-get install -y git
 sudo git config --global http.sslVerify false
 
 cd /var/www/prometheus/
-sudo rm composer.lock
+sudo rm -rf composer.lock
 sudo composer  install  --no-dev  -vv
 
 sudo echo "<?php
@@ -99,16 +99,16 @@ sudo echo "<?php
 
 cd /var/www/prometheus/src/
 sudo npm install
-sudo node node_modules/gulp/bin/gulp.js --theme=hera
+sudo node node_modules/gulp/bin/gulp.js --theme=lisa
 
 cd /var/www/prometheus/
 sudo php bin/lang_pack.php -d"JJsHouse" -l"en de es fr se no it pt da fi ru nl ja"
 
-cd /var/www/prometheus/src/php/webapp/
-for lang in en de es fr se no it pt da fi ru nl ja; do sudo  ln -s . $lang; done;
+#cd /var/www/prometheus/src/php/webapp/
+#for lang in en de es fr se no it pt da fi ru nl ja; do sudo  ln -s . $lang; done;
 
-sudo apt-get install dos2unix
-sudo apt-get install unix2dos
+sudo apt-get install -y dos2unix
+sudo apt-get install -y unix2dos
 sudo dos2unix /etc/init.d/nginx
 sudo systemctl daemon-reload
 
