@@ -6,7 +6,7 @@ sudo apt-get install -y build-essential
 sudo apt-get install -y memcached
 sudo apt-get install -y node.js
 sudo apt-get install -y npm
-sudo apt-get install -y php5-cli php5-cgi php5-fpm php5-mcrypt php5-mysql php5-memcached  php5-curl php5-gmp
+sudo apt-get install -y php5-cli php5-cgi php5-fpm php5-mcrypt php5-mysql php5-memcached  php5-curl php5-gmp php5-xcache
 
 sudo ln -s -f /usr/bin/nodejs /usr/bin/node
 sudo bash -c "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin"
@@ -80,7 +80,7 @@ sudo groupadd -r www-data
 sudo useradd -r -g www-data -s /bin/false -M www-data
 
 sudo apt-get install -y php5-dev php-pear
-sudo pecl install xdebug
+sudo pecl install xdebug swoole
 sudo apt-get install -y lrzsz
 sudo apt-get install -y vim
 
