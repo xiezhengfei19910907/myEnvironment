@@ -56,8 +56,8 @@ sudo php bin/lang_pack.php -d"JJsHouse" -l"en de es fr se no it pt da fi ru nl j
 #cd /var/www/prometheus/src/php/webapp/
 #for lang in en de es fr se no it pt da fi ru nl ja; do sudo  ln -s . $lang; done;
 
-sudo apt-get install -y dos2unix
-sudo apt-get install -y unix2dos
+#sudo apt-get install -y dos2unix
+#sudo apt-get install -y unix2dos
 #sudo dos2unix /etc/init.d/nginx
 #sudo systemctl daemon-reload
 
