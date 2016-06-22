@@ -18,7 +18,7 @@ sudo apt-get install -y libpcre3 libpcre3-dev
 sudo ln -s -f /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h
 sudo apt-get install -y libgd2-xpm-dev libgeoip-dev libgoogle-perftools-dev libperl-dev
 
-sudo apt-get install nginx
+sudo apt-get install -y nginx
 sudo mkdir -p /var/nginxproxycache/client_temp
 sudo cp -r /var/www/nginx_config/* /etc/nginx/
 
