@@ -1,3 +1,2 @@
-# myEnvironment
+# jjshouse.com 开发环境搭建
 
-# vagrant 搭建环境 #
