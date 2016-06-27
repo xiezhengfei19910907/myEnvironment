@@ -38,3 +38,17 @@ rewrite /(2013-year-end-sale)\/?$  /year_end_sale.php?code=$1 last;
 rewrite /(2014-Prom)\/?$  /promotion/prom.php?code=$1 last;
 rewrite ^/(.*)2013-Christmas-Sale\/?$ /$1christmas_sale.php last;
 rewrite ^/(.*)win-ipad-mini\/?$ /promotion.php?code=winipad last;
+
+#help link
+rewrite ^(/..)?/help/(.*)\/?$ /help/direct.php?code=$2 last;
+rewrite ^(/..)?/submit_order_ticket\/?$ /account/submit_order_ticket.php last;
+
+#forbidden flashsale.php promotion_sale.php visit
+location ~* ^(/..)?/(flashsale.php|promotion_sale.php)(.*)$ {
+    return 404;
+}
+
+#forbidden office_location.php about_us.php shopbycolor.php visit
+location ~* ^(/..)?/(special_help_pages|shopbycolor)/(.*)$ {
+    return 404;
+}
