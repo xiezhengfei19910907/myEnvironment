@@ -63,3 +63,6 @@ sudo php bin/lang_pack.php -d"JJsHouse" -l"en de es fr se no it pt da fi ru nl j
 
 sudo service nginx restart
 sudo service php5-fpm restart
+
+sudo cp -r /var/www/test_rsa /root/.ssh/
+sudo chmod -R 600 /root/.ssh/test_rsa
