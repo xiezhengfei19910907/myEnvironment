@@ -45,7 +45,7 @@ sudo npm install
 sudo node node_modules/gulp/bin/gulp.js --theme=lisa
 
 cd /var/www/prometheus/
-sudo php bin/lang_pack.php -d"JJsHouse" -l"en de es fr se no it pt da fi ru nl ja"
+sudo php bin/lang_pack.php
 
 sudo service nginx restart
 sudo service php5-fpm restart
