@@ -3,10 +3,9 @@
 sudo apt-get update
 sudo apt-get install -y build-essential
 
-sudo apt-get install -y memcached
-sudo apt-get install -y node.js
-sudo apt-get install -y npm
-sudo apt-get install -y php5-cli php5-cgi php5-fpm php5-mcrypt php5-mysql php5-memcached php5-curl php5-gmp php5-xcache
+sudo apt-get install -y memcached node.js npm
+sudo apt-get install -y php php7.0-cli php7.0-cgi php7.0-fpm php7.0-mcrypt php7.0-mysql
+sudo apt-get install -y php-mcrypt php-memcached php-curl php-gmp php-mysql php-xdebug php-mbstring php-gd
 
 sudo ln -s -f /usr/bin/nodejs /usr/bin/node
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/bin
@@ -22,33 +21,21 @@ sudo apt-get install -y nginx
 sudo mkdir -p /var/nginxproxycache/client_temp
 sudo cp -r /var/www/nginx_config/* /etc/nginx/
 
-sudo apt-get install -y php5-dev php-pear
-sudo pecl install xdebug swoole
-sudo apt-get install -y lrzsz
-sudo apt-get install -y vim
-
-sudo apt-get install -y git
+sudo apt-get install -y lrzsz vim git dos2unix
 sudo git config --global http.sslVerify false
 
-cd /var/www/prometheus/
-sudo rm -rf composer.lock
-sudo composer  install  --no-dev  -vv
+echo 'zend_extension=xdebug.so
+xdebug.remote_enable = 1
+xdebug.remote_connect_back = 1
+xdebug.remote_port = 9000
+xdebug.scream=0
+xdebug.cli_color=1
+xdebug.show_local_vars=1
+xdebug.idekey="PHPSTORM"' > /etc/php/7.0/mods-available/xdebug.ini
 
-sudo echo "<?php
-\$GLOBALS['DOMAIN'] = 'JJsHouse';
-\$serve_host = '__SERVER_NAME__';
-\$stage = 'dev-1';
-" | sudo tee /var/www/prometheus/data/env_config.php
-
-cd /var/www/prometheus/src/
-sudo npm install
-sudo node node_modules/gulp/bin/gulp.js --theme=lisa
-
-cd /var/www/prometheus/
-sudo php bin/lang_pack.php
-
+sudo service php7.0-fpm restart
 sudo service nginx restart
-sudo service php5-fpm restart
 
+sudo mkdir /root/.ssh
 sudo cp -r /var/www/test_rsa /root/.ssh/
 sudo chmod -R 600 /root/.ssh/test_rsa
