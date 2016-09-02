@@ -36,6 +36,6 @@ xdebug.idekey="PHPSTORM"' > /etc/php/7.0/mods-available/xdebug.ini
 sudo service php7.0-fpm restart
 sudo service nginx restart
 
-sudo mkdir /root/.ssh
-sudo cp -r /var/www/test_rsa /root/.ssh/
-sudo chmod -R 600 /root/.ssh/test_rsa
+#sudo mkdir /root/.ssh
+#sudo cp -r /var/www/test_rsa /root/.ssh/
+#sudo chmod -R 600 /root/.ssh/test_rsa
