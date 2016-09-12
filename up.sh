@@ -5,7 +5,7 @@ sudo apt-get install -y build-essential
 
 sudo apt-get install -y memcached node.js npm
 sudo apt-get install -y php php7.0-cli php7.0-cgi php7.0-fpm php7.0-mcrypt php7.0-mysql
-sudo apt-get install -y php-mcrypt php-memcached php-curl php-gmp php-mysql php-xdebug php-mbstring php-gd
+sudo apt-get install -y php-mcrypt php-memcached php-curl php-gmp php-mysql php-xdebug php-mbstring php-gd php-soap
 
 sudo ln -s -f /usr/bin/nodejs /usr/bin/node
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/bin
