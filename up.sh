@@ -6,7 +6,12 @@ sudo apt-get install -y build-essential
 sudo apt-get install -y memcached
 sudo apt-get install -y node.js
 sudo apt-get install -y npm
-sudo apt-get install -y php5-cli php5-cgi php5-fpm php5-mcrypt php5-mysql php5-memcached php5-curl php5-gmp php5-xcache
+sudo apt-get install -y curl
+
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository ppa:ondrej/php
+
+sudo apt-get install -y php5.6 php5.6-bcmath php5.6-cli php5.6-dba php5.6-fpm php5.6-imap php5.6-json php5.6-mcrypt php5.6-opcache php5.6-sybase php5.6-xmlrpc php5.6-bz2 php5.6-common php5.6-dev php5.6-gd php5.6-interbase php5.6-ldap php5.6-mysql php5.6-pgsql php5.6-readline php5.6-soap php5.6-tidy php5.6-xsl php5.6-cgi php5.6-curl php5.6-enchant php5.6-gmp php5.6-intl php5.6-mbstring php5.6-odbc php5.6-phpdbg php5.6-recode php5.6-xml php5.6-xdebug php5.6-zip
 
 sudo ln -s -f /usr/bin/nodejs /usr/bin/node
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/bin
@@ -20,10 +25,10 @@ sudo apt-get install -y libgd2-xpm-dev libgeoip-dev libgoogle-perftools-dev libp
 
 sudo apt-get install -y nginx
 sudo mkdir -p /var/nginxproxycache/client_temp
-sudo cp -r /var/www/nginx_config/* /etc/nginx/
+sudo cp -r /var/www/myEnvironment/nginx_config/* /etc/nginx/
 
-sudo apt-get install -y php5-dev php-pear
-sudo pecl install xdebug swoole
+# sudo apt-get install -y php5.6-dev php-pear
+# sudo pecl install xdebug swoole
 sudo apt-get install -y lrzsz
 sudo apt-get install -y vim
 
@@ -48,7 +53,7 @@ cd /var/www/prometheus/
 sudo php bin/lang_pack.php
 
 sudo service nginx restart
-sudo service php5-fpm restart
+sudo service php5.6-fpm restart
 
-sudo cp -r /var/www/test_rsa /root/.ssh/
+sudo cp -r /var/www/myEnvironment/test_rsa /root/.ssh/
 sudo chmod -R 600 /root/.ssh/test_rsa

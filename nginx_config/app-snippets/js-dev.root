@@ -1,1 +1,1 @@
-set $prjroot /var/www/prometheus/;
+set $prjroot /mnt/hgfs/www/prometheus/;
