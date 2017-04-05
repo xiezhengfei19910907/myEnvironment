@@ -27,7 +27,7 @@ sudo apt-get install -y nginx
 sudo mkdir -p /var/nginxproxycache/client_temp
 sudo cp -r /var/www/myEnvironment/nginx_config/* /etc/nginx/
 
-# sudo apt-get install -y php5.6-dev php-pear
+# sudo apt-get install -y php5-dev php-pear
 # sudo pecl install xdebug swoole
 sudo apt-get install -y lrzsz
 sudo apt-get install -y vim
